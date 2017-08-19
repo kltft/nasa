@@ -21,3 +21,4 @@ interface WeatherForecast {
     temperatureF: number;
     summary: string;
 }
+//TODO should i use the NEO objects api to build a table??
