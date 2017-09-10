@@ -2,22 +2,26 @@
 
 <div *ngIf="apod">
     <div class="row">
-        <div class="col-md-1">
+        <!--<div class="col-md-1">
             <h1>NASA</h1>
-        </div>
+        </div>-->
         <div class="col-md-11">
-            <h1><strong>A</strong>stronomy <strong>P</strong>hoto <strong>O</strong>f the <strong>D</strong>ay</h1>
+            <h2> <strong>A</strong>stronomy <strong>P</strong>hoto <strong>O</strong>f the <strong>D</strong>ay</h2>
         </div>
     </div>
     <h2>{{ apod.date }}</h2>
     <h3>{{ apod.title }}</h3>
 
     
-
-    <a href="{{ apod.hdurl }}" target="_blank">
-        <img src="{{ apod.url }}" height="500" alt="Click for High Def Version" />
-    </a>
-    <p>Photo Credit: {{ apod.copyright }}</p>
+    <div *ngIf="apod.media_type != 'video'">
+        <a href="{{ apod.hdurl }}" target="_blank">
+            <img src="{{ apod.url }}" height="500" alt="Click for High Def Version" />
+        </a>
+    </div>
+    <div *ngIf="apod.media_type == 'video'">
+        <iframe [src]="url"></iframe>
+    </div>
+    <p>Credit: {{ apod.copyright }}</p>
     <p>{{ apod.explanation }}</p>
 </div>
 
